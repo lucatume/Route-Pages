@@ -1,0 +1,28 @@
+{
+    "name": "lucatume/route-pages",
+    "description": "A WP Router extension to manage route created pages.",
+    "authors": [
+        {
+            "name": "theAverageDev (Luca Tumedei)",
+            "email": "luca@theaveragedev.com"
+        }
+    ],
+    "require": {
+        "lucatume/tdd-helpers": "~2.0",
+        "xrstf/composer-php52": "1.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-update-cmd": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ],
+        "post-autoload-dump": [
+            "xrstf\\Composer52\\Generator::onPostInstallCmd"
+        ]
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
