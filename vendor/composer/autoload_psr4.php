@@ -6,4 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'tad\\wordpress\\maker\\' => array($vendorDir . '/lucatume/wp-browser/src'),
+    'GuzzleHttp\\Stream\\' => array($vendorDir . '/guzzlehttp/streams/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
+    'Codeception\\Module\\' => array($vendorDir . '/lucatume/wp-browser/src'),
+    'Codeception\\Lib\\Driver\\' => array($vendorDir . '/lucatume/wp-browser/src'),
 );

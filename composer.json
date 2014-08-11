@@ -7,8 +7,11 @@
             "email": "luca@theaveragedev.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
+        "badcow/lorem-ipsum": "dev-master",
         "lucatume/tdd-helpers": "~2.0",
+        "lucatume/wp-utils": "~2.0",
         "xrstf/composer-php52": "1.*"
     },
     "scripts": {
@@ -24,5 +27,9 @@
     },
     "autoload": {
         "classmap": ["src/"]
+    },
+    "require-dev": {
+        "codeception/codeception": "2.*",
+        "lucatume/wp-browser": "1.*"
     }
 }
