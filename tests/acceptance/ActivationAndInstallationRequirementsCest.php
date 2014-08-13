@@ -39,6 +39,17 @@ class ActivationAndInstallationRequirementsCest
         $I->seeElement('a#wp-router-activation-link');
     }
 
+    public function shouldActivateIfWPRouterActivated(AcceptanceTester $I){
+
+        $I->loginAsAdmin();
+        $I->amOnPluginsPage();
+
+        $I->activatePlugin('wp-router');
+        $I->activatePlugin('route-pages');
+
+        $I->canSeePluginActivated('route-pages');
+    }
+
    protected function disinstallWpRouterPlugin(){
        if(file_exists($this->wpRouterMainFile . '.php')){
            $this->shouldRestoreWpRouterMainFile = rename($this->wpRouterMainFile . '.php', $this->wpRouterMainFile);
