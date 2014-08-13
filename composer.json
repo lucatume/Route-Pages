@@ -10,8 +10,8 @@
     "minimum-stability": "dev",
     "require": {
         "badcow/lorem-ipsum": "dev-master",
-        "lucatume/tdd-helpers": "~2.0",
-        "lucatume/wp-utils": "~2.0",
+        "lucatume/tdd-helpers": "2.*    ",
+        "lucatume/wp-utils": "2.*",
         "xrstf/composer-php52": "1.*"
     },
     "scripts": {

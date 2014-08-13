@@ -141,7 +141,10 @@ class Route_Pages
      */
     public static function activate()
     {
-        // do something here
+        // check for the plugin dependencies
+//        public function __construct($pluginName, $pluginSlug, $pluginFile, tad_FunctionsAdapterInterface $functions = null)
+        $routePages = new tad_Plugin('Route Pages', 'route-pages', __FILE__);
+        $routePages->rkkll
     }
     /**
      * Deactivate the plugin
