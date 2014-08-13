@@ -22,9 +22,21 @@ class ActivationAndInstallationRequirementsCest
         $I->loginAsAdmin();
         $I->amOnPluginsPage();
         $I->dontSeePluginInstalled('wp-router');
+
         $I->activatePlugin('route-pages');
+
         $I->seeWpDiePage();
         $I->seeElement('a#wp-router-installation-link');
+    }
+    public function shouldShowWpDiePageIfWPRouterNotActivated(AcceptanceTester $I){
+        $I->loginAsAdmin();
+        $I->amOnPluginsPage();
+        $I->canSeePluginDeactivated('wp-router');
+
+        $I->activatePlugin('route-pages');
+
+        $I->seeWpDiePage();
+        $I->seeElement('a#wp-router-activation-link');
     }
 
    protected function disinstallWpRouterPlugin(){
@@ -40,6 +52,7 @@ class ActivationAndInstallationRequirementsCest
         }
         if ($this->shouldRestoreWpRouterMainFile) {
             rename($this->wpRouterMainFile, $this->wpRouterMainFile . '.php');
+            $this->shouldRestoreWpRouterMainFile = false;
         }
     }
 }
