@@ -142,9 +142,9 @@ class Route_Pages
     public static function activate()
     {
         // check for the plugin dependencies
-//        public function __construct($pluginName, $pluginSlug, $pluginFile, tad_FunctionsAdapterInterface $functions = null)
         $routePages = new tad_Plugin('Route Pages', 'route-pages', __FILE__);
-        $routePages->rkkll
+        $routePages->requires('WP Router', 'wp-router', 'https://wordpress.org/plugins/wp-router/', 'WP-Router/wp-router.php');
+        $routePages->checkRequirements();
     }
     /**
      * Deactivate the plugin
