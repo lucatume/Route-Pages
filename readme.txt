@@ -1,7 +1,7 @@
 === Route Pages ===
-Contributors:      10up
+Contributors:      theAverageDev (Luca Tumedei)
 Donate link:       http://theaveragedev.com
-Tags: 
+Tags:              route, page
 Requires at least: 3.5.1
 Tested up to:      3.5.1
 Stable tag:        0.1.0
@@ -12,27 +12,13 @@ A WP Router extension to manage route created pages.
 
 == Description ==
 
-
+This plugin, together with WP Router, will allow creating routes using a Laravel-like syntax and manage the route-generated pages from the page administration menu.
 
 == Installation ==
+
+Still not available on WordPress plugin repository.
 
 = Manual Installation =
 
 1. Upload the entire `/route-pages` directory to the `/wp-content/plugins/` directory.
 2. Activate Route Pages through the 'Plugins' menu in WordPress.
-
-== Frequently Asked Questions ==
-
-
-== Screenshots ==
-
-
-== Changelog ==
-
-= 0.1.0 =
-* First release
-
-== Upgrade Notice ==
-
-= 0.1.0 =
-First Release
