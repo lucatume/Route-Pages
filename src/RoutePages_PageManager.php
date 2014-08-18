@@ -52,6 +52,17 @@ class RoutePages_PageManager
     public function createRoutePages()
     {
         $persistedRoutesMeta = $this->routesMetaOption->getValues();
+        if(is_array($persistedRoutesMeta)){
+            foreach($persistedRoutesMeta as $routeMeta){
+                $this->f->wp_insert_post(array(
+                    'post_content' => '',
+                    'post_name' => $routeMeta['permalink'],
+                    'post_title' => $routeMeta['title'],
+                    'post_status' => 'publish',
+                    'post_type' => $routeMeta['generate']
+                ));
+            }
+        }
     }
 
     public function getPagesMetaOption()
@@ -61,7 +72,7 @@ class RoutePages_PageManager
 
     public function setPagesMetaOption(tad_Option $pagesMetaOption = null)
     {
-        $this->routesMetaOption = $pagesMetaOption ? $pagesMetaOption : tad_Option::on($this->pagesMetaOptionName);
+        $this->pagesMetaOption = $pagesMetaOption ? $pagesMetaOption : tad_Option::on($this->pagesMetaOptionName);
     }
 
     public function getFunctionsAdapter()

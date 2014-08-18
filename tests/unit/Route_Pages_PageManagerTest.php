@@ -54,7 +54,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $option = $this->getMock('tad_Option');
         $option->expects($this->once())
             ->method('getValues');
-        $sut = new RoutePages_PageManager(null ,null ,$option);
+        $sut = new RoutePages_PageManager(null, null, $option);
         $sut->createRoutePages();
     }
 
@@ -65,23 +65,26 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
     public function it_should_insert_a_page_for_each_persisted_route_that_should_generate_a_page()
     {
 //        self::$option->setValue($routeId, array('title' => $args['title'], 'permalink' => $args['permalink']));
-        $oneRouteMeta = array('helloRoute' => array('title' => 'Hello there', 'permalink' => 'hello', 'generate' => 'page'));
+        $oneRouteMeta = array('helloRoute' => array('title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page'));
         $option = $this->getMock('tad_Option');
         $option->expects($this->once())
             ->method('getValues')
             ->will($this->returnValue($oneRouteMeta));
-        $functions = $this->getMock('tad_FunctionsAdapterInterface');
         $insertArguments = array(
             'post_content' => '',
-            'post_name' => $oneRouteMeta[0],
-            'post_title' => $oneRouteMeta['title'],
+            'post_name' => 'hello-route',
+            'post_title' => 'Hello Route',
             'post_status' => 'publish',
-            'post_type' => 'page',
-            'guid' => ''
+            'post_type' => 'page'
         );
+        $functions = $this->getMockBuilder('tad_FunctionsAdapter')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__call', 'wp_insert_post'))
+            ->getMock();
         $functions->expects($this->once())
-            ->method('wp_insert_page')
-            ->with($insertArguments);
+            ->method('wp_insert_post')
+            ->with($this->equalTo($insertArguments))
+            ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
         $sut->createRoutePages();
     }
