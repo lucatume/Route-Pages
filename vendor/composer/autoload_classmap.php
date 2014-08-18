@@ -411,7 +411,7 @@ return array(
     'RemoteTouchScreen' => $vendorDir . '/facebook/webdriver/lib/remote/RemoteTouchScreen.php',
     'RemoteWebDriver' => $vendorDir . '/facebook/webdriver/lib/remote/RemoteWebDriver.php',
     'RemoteWebElement' => $vendorDir . '/facebook/webdriver/lib/remote/RemoteWebElement.php',
-    'Route_Pages_PageManager' => $baseDir . '/src/Route_Pages_PageManager.php',
+    'RoutePages_PageManager' => $baseDir . '/src/RoutePages_PageManager.php',
     'ScriptTimeoutException' => $vendorDir . '/facebook/webdriver/lib/WebDriverExceptions.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
