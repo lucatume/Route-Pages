@@ -64,7 +64,6 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_insert_a_page_for_each_persisted_route_that_should_generate_a_page()
     {
-//        self::$option->setValue($routeId, array('title' => $args['title'], 'permalink' => $args['permalink']));
         $oneRouteMeta = array('helloRoute' => array('title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page'));
         $option = $this->getMock('tad_Option');
         $option->expects($this->once())
