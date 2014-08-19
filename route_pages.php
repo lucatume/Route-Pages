@@ -146,11 +146,12 @@ class RoutePages
     {
         // check for the plugin dependencies
         $routePages = new tad_Plugin('Route Pages', 'route-pages', __FILE__);
-        $routePages->requires('WP Router', 'wp-router', 'https://wordpress.org/plugins/wp-router/', 'WP-Router/wp-router.php');
+        $routePages->requires('WP Router', 'wp-router', 'https://wordpress.org/plugins/wp-router/', 'wp-router/wp-router.php');
         $routePages->checkRequirements();
 
         self::$instance->pageManager->createRoutePages();
     }
+
     /**
      * Deactivate the plugin
      * Uninstall routines should be in uninstall.php
