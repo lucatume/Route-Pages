@@ -52,14 +52,24 @@ class RoutePages_PageManager
     public function createRoutePages()
     {
         $persistedRoutesMeta = $this->routesMetaOption->getValues();
+        // get supported post types names
+        // will be an empty array if none is found
+        $postTypes = $this->f->get_post_types();
         if(is_array($persistedRoutesMeta)){
             foreach($persistedRoutesMeta as $routeMeta){
+                if(empty($routeMeta['generate']) || !is_string($routeMeta['generate'])){
+                    continue;
+                }
+                $generatePostType = $routeMeta['generate'];
+                if(!in_array($generatePostType, $postTypes)){
+                    continue;
+                }
                 $this->f->wp_insert_post(array(
                     'post_content' => '',
                     'post_name' => $routeMeta['permalink'],
                     'post_title' => $routeMeta['title'],
                     'post_status' => 'publish',
-                    'post_type' => $routeMeta['generate']
+                    'post_type' => $generatePostType
                 ));
             }
         }
