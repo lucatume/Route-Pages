@@ -14,8 +14,7 @@ return array(
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Symfony\\Component\\BrowserKit\\' => array($vendorDir . '/symfony/browser-kit'),
-    'LazyMap\\' => array($vendorDir . '/ocramius/lazy-map/src'),
-    'Instantiator\\' => array($vendorDir . '/ocramius/instantiator/src'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src'),
     'Codeception' => array($vendorDir . '/codeception/codeception/src'),
     'Badcow' => array($vendorDir . '/badcow/lorem-ipsum/lib'),
 );

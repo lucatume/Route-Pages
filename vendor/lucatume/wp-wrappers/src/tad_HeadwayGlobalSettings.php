@@ -1,6 +1,6 @@
 <?php
 
-class tad_HeadwayGlobalSettings extends tad_OptionWrapper
+class tad_HeadwayGlobalSettings extends tad_Option
 {
     const OPTION_NAME = 'headway_option_group_general';
     
@@ -9,7 +9,7 @@ class tad_HeadwayGlobalSettings extends tad_OptionWrapper
     public function __construct($prefix = '', tad_FunctionsAdapterInterface $functions = null)
     {
         if (!is_string($prefix)) {
-            throw new \BadMethodCallException("Prefix must be a string", 1);
+            throw new tad_StaticBadMethodCallException("Prefix must be a string", 1);
         }
         $this->prefix = $prefix;
         parent::__construct($functions);

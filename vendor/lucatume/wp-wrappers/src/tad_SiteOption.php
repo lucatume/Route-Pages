@@ -1,5 +1,5 @@
 <?php
-class tad_SiteOption extends tad_OptionWrapper
+class tad_SiteOption extends tad_Option
 {
     protected $isSiteOption = true;
 

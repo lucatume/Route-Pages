@@ -10,10 +10,10 @@ class tad_SerializedOption
     // public function __c
     // {
     //     if (!is_string($optionName)) {
-    //         throw new \InvalidArgumentException("tad_OptionWrapper name must be a string", 1);
+    //         throw new tad_StaticInvalidArgumentException("tad_OptionWrapper name must be a string", 1);
     //     }
     //     if (!is_bool($isSiteOption)) {
-    //         throw new \InvalidArgumentException("Is site option must be a boolean value", 2);
+    //         throw new tad_StaticInvalidArgumentException("Is site option must be a boolean value", 2);
     //     }
     //     if (is_null($f)) {
     //         $f = new tad_FunctionsAdapter();
@@ -41,7 +41,7 @@ class tad_SerializedOption
     public function __set($key, $value){
         if ($key == 'option') {
             if (!is_string($value)) {
-                throw new \BadMethodCallException("tad_OptionWrapper name should be a string", 1);
+                throw new tad_StaticBadMethodCallException("tad_OptionWrapper name should be a string", 1);
             }
             $this->option = $value;
         }
@@ -79,7 +79,7 @@ class tad_SerializedOption
         }
         else {
             if (!is_string($value)) {
-                throw new \BadMethodCallException("tad_OptionWrapper name must be a string", 1);
+                throw new tad_StaticBadMethodCallException("tad_OptionWrapper name must be a string", 1);
             }
             $this->option = $value;
         }
@@ -91,7 +91,7 @@ class tad_SerializedOption
             return $this->isSiteOption;
         } else {
             if (!is_bool($value)) {
-                throw new \BadMethodCallException("isSiteOption must be a boolean value", 1);
+                throw new tad_StaticBadMethodCallException("isSiteOption must be a boolean value", 1);
             }
             $this->isSiteOption = $value;
         }
