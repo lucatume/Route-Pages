@@ -1311,12 +1311,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "ef4e18545d76113b52043cfaa3cf9560f2fb3044"
+            "reference": "47ca212e985d962b3cbd67675eec54bb72d66062"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ef4e18545d76113b52043cfaa3cf9560f2fb3044",
-            "reference": "ef4e18545d76113b52043cfaa3cf9560f2fb3044",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/47ca212e985d962b3cbd67675eec54bb72d66062",
+            "reference": "47ca212e985d962b3cbd67675eec54bb72d66062",
             "shasum": ""
         },
         "require": {
@@ -1332,7 +1332,7 @@
         "suggest": {
             "ext-curl": "Guzzle will use specific adapters if cURL is present"
         },
-        "time": "2014-08-18 05:38:05",
+        "time": "2014-08-20 05:30:12",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1555,56 +1555,6 @@
         ]
     },
     {
-        "name": "lucatume/wp-wrappers",
-        "version": "2.0.3",
-        "version_normalized": "2.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/lucatume/wp-wrappers.git",
-            "reference": "fd12f01f58ece60394a9633ac48ca7460b3a30a7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/lucatume/wp-wrappers/zipball/fd12f01f58ece60394a9633ac48ca7460b3a30a7",
-            "reference": "fd12f01f58ece60394a9633ac48ca7460b3a30a7",
-            "shasum": ""
-        },
-        "require": {
-            "lucatume/tdd-helpers": "~2.0",
-            "lucatume/wp-utils": "~2.0",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "codeception/codeception": "1.8.*",
-            "phpspec/phpspec": "2.0.*@dev"
-        },
-        "time": "2014-08-19 12:15:59",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "theAverageDev (Luca Tumedei)",
-                "email": "luca@theaveragedev.com",
-                "homepage": "http://theaveragedev.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "WordPress wrappers to streamline development of themes and plugins.",
-        "homepage": "http://github.com/lucatume/wp-wrappers",
-        "keywords": [
-            "wordpress"
-        ]
-    },
-    {
         "name": "lucatume/wp-browser",
         "version": "1.3.5",
         "version_normalized": "1.3.5.0",
@@ -1653,6 +1603,56 @@
         "homepage": "http://github.com/lucatume/wp-browser",
         "keywords": [
             "codeception",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "lucatume/wp-wrappers",
+        "version": "2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/lucatume/wp-wrappers.git",
+            "reference": "07148d093ca307f89bec65bd215ff3fd900b2d96"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/lucatume/wp-wrappers/zipball/07148d093ca307f89bec65bd215ff3fd900b2d96",
+            "reference": "07148d093ca307f89bec65bd215ff3fd900b2d96",
+            "shasum": ""
+        },
+        "require": {
+            "lucatume/tdd-helpers": "~2.0",
+            "lucatume/wp-utils": "~2.0",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "codeception/codeception": "1.8.*",
+            "phpspec/phpspec": "2.0.*@dev"
+        },
+        "time": "2014-08-20 07:09:39",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "theAverageDev (Luca Tumedei)",
+                "email": "luca@theaveragedev.com",
+                "homepage": "http://theaveragedev.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "WordPress wrappers to streamline development of themes and plugins.",
+        "homepage": "http://github.com/lucatume/wp-wrappers",
+        "keywords": [
             "wordpress"
         ]
     }

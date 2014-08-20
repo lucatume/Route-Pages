@@ -9,7 +9,7 @@ class tad_HeadwayGlobalSettings extends tad_Option
     public function __construct($prefix = '', tad_FunctionsAdapterInterface $functions = null)
     {
         if (!is_string($prefix)) {
-            throw new tad_StaticBadMethodCallException("Prefix must be a string", 1);
+            throw new BadMethodCallException("Prefix must be a string", 1);
         }
         $this->prefix = $prefix;
         parent::__construct($functions);

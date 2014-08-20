@@ -82,10 +82,6 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals( $this->sut, $this->sut->underscoreProperties( false ) );
 	}
 
-	public function testIsSerializedIsSetToFalseByDefault() {
-		$this->assertEquals( false, $this->sut->isSerialized() );
-	}
-
 	public function testLoadWillTryGetOptionWithOptionSlug() {
 		$this->f->expects( $this->once() )->method( 'get_option' )->with( 'some' );
 		$this->sut->optionSlug( 'some' )->load();
@@ -105,30 +101,10 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals( 'lorem ipsum', $this->sut->thirdValue );
 	}
 
-	public function testLoadWillLoadSerializedOptions() {
-		$data = serialize( array( 'first_value' => 23, 'second_value' => false, 'third_value' => 'lorem ipsum' ) );
-		$this->f->expects( $this->once() )->method( 'get_option' )->will( $this->returnValue( $data ) );
-		$this->sut->optionSlug( 'some' )->load();
-		$this->assertTrue( $this->sut->isSerialized() );
-		$this->assertEquals( 23, $this->sut->firstValue );
-		$this->assertEquals( false, $this->sut->secondValue );
-		$this->assertEquals( 'lorem ipsum', $this->sut->thirdValue );
-	}
-
 	public function testLoadWillExposeValuesUsingUnderscoresForNonSerializedOptions() {
 		$data = array( 'first_value' => 23, 'second_value' => false, 'third_value' => 'lorem ipsum' );
 		$this->f->expects( $this->once() )->method( 'get_option' )->will( $this->returnValue( $data ) );
 		$this->sut->optionSlug( 'some' )->underscoreProperties( true )->load();
-		$this->assertEquals( 23, $this->sut->first_value );
-		$this->assertEquals( false, $this->sut->second_value );
-		$this->assertEquals( 'lorem ipsum', $this->sut->third_value );
-	}
-
-	public function testLoadWillExposeValuesUsingUnderscoresForSerializedOptions() {
-		$data = serialize( array( 'first_value' => 23, 'second_value' => false, 'third_value' => 'lorem ipsum' ) );
-		$this->f->expects( $this->once() )->method( 'get_option' )->will( $this->returnValue( $data ) );
-		$this->sut->optionSlug( 'some' )->underscoreProperties( true )->load();
-		$this->assertTrue( $this->sut->isSerialized() );
 		$this->assertEquals( 23, $this->sut->first_value );
 		$this->assertEquals( false, $this->sut->second_value );
 		$this->assertEquals( 'lorem ipsum', $this->sut->third_value );
@@ -164,26 +140,11 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 		$this->sut->__destruct();
 	}
 
-	public function testIsSerializedCanBeSetAndGet() {
-		$this->sut->optionSlug( 'some' )->isSerialized( true );
-		$this->assertEquals( 'some', $this->sut->optionSlug() );
-		$this->assertTrue( $this->sut->isSerialized() );
-		$this->sut->isSerialized( false );
-		$this->assertFalse( $this->sut->isSerialized() );
-		$this->sut->isSerialized( true );
-		$this->assertTrue( $this->sut->isSerialized() );
-	}
-
-	public function testIsSerializedIsChainable() {
-		$this->assertSame( $this->sut, $this->sut->optionSlug( 'some' )->isSerialized( true ) );
-	}
-
 	public function testAllowsConstructionAndSavingOfNonPreExistingOption() {
-		$newData = serialize( array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' ) );
+		$newData = array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' );
 		$this->f->expects( $this->once() )->method( 'get_option' )->will( $this->returnValue( false ) );
-		$this->sut->optionSlug( 'some' )->isSerialized( true )->load();
+		$this->sut->optionSlug( 'some' )->load();
 		$this->assertEquals( 'some', $this->sut->optionSlug() );
-		$this->assertTrue( $this->sut->isSerialized() );
 		$this->sut->firstValue  = 34;
 		$this->sut->secondValue = true;
 		$this->sut->thirdValue  = 'dolor sit';
@@ -195,11 +156,10 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testAllowsConstructionAndSavingOfNonPreExistingSiteOption() {
-		$newData = serialize( array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' ) );
+		$newData = array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' );
 		$this->f->expects( $this->once() )->method( 'get_site_option' )->will( $this->returnValue( false ) );
-		$this->sut->optionSlug( 'some' )->isSiteOption( true )->isSerialized( true )->load();
+		$this->sut->optionSlug( 'some' )->isSiteOption( true )->load();
 		$this->assertEquals( 'some', $this->sut->optionSlug() );
-		$this->assertTrue( $this->sut->isSerialized() );
 		$this->sut->firstValue  = 34;
 		$this->sut->secondValue = true;
 		$this->sut->thirdValue  = 'dolor sit';
@@ -211,13 +171,12 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testOnMethodAllowsGettingAndUpdatingOption() {
-		$data    = serialize( array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' ) );
-		$newData = serialize( array( 'firstValue' => 23, 'secondValue' => false, 'thirdValue' => 'lorem ipsum' ) );
+		$data    = array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' );
+		$newData = array( 'firstValue' => 23, 'secondValue' => false, 'thirdValue' => 'lorem ipsum');
 		$this->f->expects( $this->once() )->method( 'get_option' )->with( 'some' )->will( $this->returnValue( $data ) );
 		$sut = tad_Option::on( 'some', $this->f );
 		$this->assertEquals( 'some', $sut->optionSlug() );
 		$this->assertFalse( $sut->underscoreProperties() );
-		$this->assertTrue( $sut->isSerialized() );
 		$this->assertFalse( $sut->isSiteOption() );
 		$this->assertEquals( 34, $sut->firstValue );
 		$this->assertEquals( true, $sut->secondValue );
@@ -229,13 +188,12 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testOnMethodAllowsLoadingSerializedOption() {
-		$data    = serialize( array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit' ) );
-		$newData = serialize( array( 'first_value' => 23, 'second_value' => false, 'third_value' => 'lorem ipsum' ) );
+		$data    = array( 'firstValue' => 34, 'secondValue' => true, 'thirdValue' => 'dolor sit');
+		$newData = array( 'first_value' => 23, 'second_value' => false, 'third_value' => 'lorem ipsum' );
 		$this->f->expects( $this->once() )->method( 'get_option' )->with( 'some' )->will( $this->returnValue( $data ) );
 		$sut = tad_Option::on( 'some', $this->f );
 		$this->assertEquals( 'some', $sut->optionSlug() );
 		$this->assertFalse( $sut->underscoreProperties() );
-		$this->assertTrue( $sut->isSerialized() );
 		$this->assertFalse( $sut->isSiteOption() );
 		$this->assertEquals( 34, $sut->firstValue );
 		$this->assertEquals( true, $sut->secondValue );
@@ -253,7 +211,6 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
 		$sut = tad_Option::on( 'some', $this->f );
 		$this->assertEquals( 'some', $sut->optionSlug() );
 		$this->assertFalse( $sut->underscoreProperties() );
-		$this->assertFalse( $sut->isSerialized() );
 		$this->assertFalse( $sut->isSiteOption() );
 		$this->assertEquals( 34, $sut->firstValue );
 		$this->assertEquals( true, $sut->secondValue );

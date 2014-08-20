@@ -8,7 +8,6 @@ class tad_Option
     protected $loadedValue;
     protected $originalKeys;
     protected $val;
-    protected $isSerialized;
     protected $suffix = '';
     protected $underscoreProperties = false;
     
@@ -50,48 +49,7 @@ class tad_Option
         
         // get the option value; default to empty array
         $value = $this->f->$functionName($this->slug);
-        if (!$value) {
-            
-            // either the option is false or it does not exist
-            // the possibility it is a false value option is ignored
-            if (is_null($this->isSerialized)) {
-                
-                // if it has not been set by the user set it
-                $this->isSerialized = false;
-            }
-            
-            // value defaults to empty array
-            $this->val = array();
-        } else {
-            
-            // attempt unserialization
-            $buf = @unserialize($value);
-            if ($buf === false) {
-                
-                // if false either it was not a serialized option
-                // or it was the serialization of the FALSE value
-                // or the option in not in the database
-                if ($value == serialize(false)) {
-                    
-                    // the option is serialized
-                    $this->isSerialized = true;
-                    
-                    // the value is false
-                    $value = false;
-                } else {
-                    
-                    // it was not a serialized option
-                    $this->isSerialized = false;
-                    $value = $value;
-                }
-            } else {
-                
-                // it was a serialized options
-                $this->isSerialized = true;
-                $value = $buf;
-            }
-        }
-        
+        $value = $value ? $value : array();
         // load values from the option
         $this->loadPropertiesFrom($value);
         
@@ -200,7 +158,7 @@ class tad_Option
     public function setValue($key, $value)
     {
         if (!is_string($key)) {
-            throw new tad_StaticBadMethodCallException('Key must be a string', 1);
+            throw new BadMethodCallException('Key must be a string', 1);
         }
         $this->val[$key] = $value;
     }
@@ -208,7 +166,7 @@ class tad_Option
     public function getValue($key)
     {
         if (!is_string($key)) {
-            throw new tad_StaticBadMethodCallException('Key must be a string', 1);
+            throw new BadMethodCallException('Key must be a string', 1);
         }
         if (isset($this->val[$key])) {
             return $this->val[$key];
@@ -225,25 +183,12 @@ class tad_Option
     {
         if (!is_null($value)) {
             if (!is_bool($value)) {
-                throw new tad_StaticBadMethodCallException("isSiteOption value must be a boolean", 1);
+                throw new BadMethodCallException("isSiteOption value must be a boolean", 1);
             }
             $this->isSiteOption = $value;
             return $this;
         } else {
             return $this->isSiteOption;
-        }
-    }
-    
-    public function isSerialized($value = null)
-    {
-        if (is_null($value)) {
-            return $this->isSerialized;
-        } else {
-            if (!is_bool($value)) {
-                throw new tad_StaticBadMethodCallException("isSerialized property value must be a boolean.", 1);
-            }
-            $this->isSerialized = $value;
-            return $this;
         }
     }
     
@@ -253,7 +198,7 @@ class tad_Option
             return $this->underscoreProperties;
         } else {
             if (!is_bool($value)) {
-                throw new tad_StaticBadMethodCallException("Underscore properties value must be a boolean.", 1);
+                throw new BadMethodCallException("Underscore properties value must be a boolean.", 1);
             }
             $this->underscoreProperties = $value;
             return $this;
@@ -265,7 +210,7 @@ class tad_Option
             return $this->slug;
         }
         if (!is_null($value) and !is_string($value)) {
-            throw new tad_StaticBadMethodCallException("tad_Option slug must be a string", 1);
+            throw new BadMethodCallException("tad_Option slug must be a string", 1);
         }
         $this->slug = $value;
         return $this;
@@ -282,7 +227,7 @@ class tad_Option
     public function removeValue($key)
     {
         if (!is_string($key)) {
-            throw new tad_StaticInvalidArgumentException("Key must be a string", 1);
+            throw new InvalidArgumentException("Key must be a string", 1);
         }
         $this->setValues(tad_Arr::removeKey($this->val, $key)); }
 }

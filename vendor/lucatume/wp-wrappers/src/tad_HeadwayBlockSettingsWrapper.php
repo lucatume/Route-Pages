@@ -7,14 +7,14 @@ class tad_HeadwayBlockSettingsWrapper
     public function __construct($block, $className = null)
     {
         if (is_null($className)) {
-            $className =  'tad_StaticHeadwayBlocksData';
+            $className =  'HeadwayBlocksData';
         }
         if (!class_exists($className)) {
             return null;
         }
         $block = $className::get_block($block);
         if (is_null($block) or !$block) {
-            throw new tad_StaticBadMethodCallException("$block is not a valid block", 1);
+            throw new BadMethodCallException("$block is not a valid block", 1);
         }
         $this->settings = array();
         if (isset($block['settings'])) {
@@ -45,7 +45,7 @@ class tad_HeadwayBlockSettingsWrapper
     public function getSetting($key, $default = null)
     {
         if (!is_string($key)) {
-            throw new tad_StaticBadMethodCallException("Key must be a string", 1);
+            throw new BadMethodCallException("Key must be a string", 1);
         }
         if (!is_null($this->$key)) {
             return self::maybeParse($this->$key);

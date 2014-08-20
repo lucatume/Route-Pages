@@ -529,7 +529,6 @@ return array(
     'tad_Option' => $vendorDir . '/lucatume/wp-wrappers/src/tad_Option.php',
     'tad_Plugin' => $vendorDir . '/lucatume/wp-utils/src/tad_Plugin.php',
     'tad_Script' => $vendorDir . '/lucatume/wp-utils/src/tad_Script.php',
-    'tad_SerializedOption' => $vendorDir . '/lucatume/wp-wrappers/src/tad_SerializedOption.php',
     'tad_SiteOption' => $vendorDir . '/lucatume/wp-wrappers/src/tad_SiteOption.php',
     'tad_Static' => $vendorDir . '/lucatume/tdd-helpers/src/tad_Static.php',
     'tad_StaticMocker' => $vendorDir . '/lucatume/tdd-helpers/src/tad_StaticMocker.php',

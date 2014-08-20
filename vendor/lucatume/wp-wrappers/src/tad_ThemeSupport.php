@@ -29,10 +29,10 @@ class tad_ThemeSupport
     protected function addOrRemove($themeSupport, $arguments = null, $merge = true)
     {
         if (!is_string($themeSupport)) {
-            throw new tad_StaticBadMethodCallException("Theme support must be a string", 1);
+            throw new BadMethodCallException("Theme support must be a string", 1);
         }
         if (!is_null($arguments) and !is_array($arguments)) {
-            throw new tad_StaticBadMethodCallException("Arguments must be an array", 2);
+            throw new BadMethodCallException("Arguments must be an array", 2);
         }
         $target = 'toRemove';
         $opposite = 'toAdd';

@@ -9,7 +9,7 @@ class tad_HeadwayVEPanel
     public function __construct($className, tad_FunctionsAdapterInterface $functions = null)
     {
         if (!is_string($className)) {
-            throw new tad_StaticBadMethodCallException("Class name must be a string", 1);
+            throw new BadMethodCallException("Class name must be a string", 1);
         }
         if (is_null($functions)) {
             $functions = new tad_FunctionsAdapter();
@@ -27,7 +27,7 @@ class tad_HeadwayVEPanel
         // hook in with a priority higher than the one Headway registers
         // its own setup block to have the Header Image options panel show
         // on the right side of it
-        $this->functions->add_action($tag, create_function('', 'return headway_register_visual_editor_panel_callback(tad_Static'' . $this->className . 'tad_Static');'), self::PRIORITY);
+        $this->functions->add_action($tag, create_function('', 'return headway_register_visual_editor_panel_callback(\'' . $this->className . '\');'), self::PRIORITY);
         return true;
     }
     public static function on($className, tad_FunctionsAdapterInterface $functions = null)
