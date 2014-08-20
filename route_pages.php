@@ -45,10 +45,10 @@ include 'vendor/autoload_52.php';
 /**
  * Activation and deactivation
 */
-register_activation_hook(__FILE__, array('Route_Pages', 'activate'));
-register_deactivation_hook(__FILE__, array('Route_Pages', 'deactivate'));
+register_activation_hook(__FILE__, array('RoutePages', 'activate'));
+register_deactivation_hook(__FILE__, array('RoutePages', 'deactivate'));
 
-class Route_Pages
+class RoutePages
 {
     public $version = null;
     public $path = null;
@@ -56,11 +56,11 @@ class Route_Pages
     public $prefix = null;
     public $js_assets = null;
     public $css_assets = null;
-    
+
     /**
      * An instance of the plugin main class, meant to be singleton.
      *
-     * @var Route_Pages
+     * @var RoutePages
      */
     private static $instance = null;
     
@@ -70,13 +70,16 @@ class Route_Pages
      * @var tad_FunctionsAdapter or a mock object.
      */
     private $f = null;
+
+    /**
+     * @var RoutePages_PageManager
+     */
+    private $pageManager = null;
     
-    public function __construct(tad_FunctionsAdapterInterface $f = null)
+    public function __construct(RoutePages_PageManager $pageManager = null, tad_FunctionsAdapterInterface $f = null)
     {
-        if (is_null($f)) {
-            $f = new tad_FunctionsAdapter();
-        }
-        $this->f = $f;
+        $this->f = $f ? $f : new tad_FunctionsAdapter();
+        $this->pageManager = $pageManager ? $pageManager : new RoutePages_PageManager();
     }
 
     /**
@@ -143,18 +146,22 @@ class Route_Pages
     {
         // check for the plugin dependencies
         $routePages = new tad_Plugin('Route Pages', 'route-pages', __FILE__);
-        $routePages->requires('WP Router', 'wp-router', 'https://wordpress.org/plugins/wp-router/', 'WP-Router/wp-router.php');
+        $routePages->requires('WP Router', 'wp-router', 'https://wordpress.org/plugins/wp-router/', 'wp-router/wp-router.php');
         $routePages->checkRequirements();
+
+        self::$instance->pageManager->createRoutePages();
     }
+
     /**
      * Deactivate the plugin
      * Uninstall routines should be in uninstall.php
      */
     public static function deactivate()
     {
-        // do something here
+        // if some pages have been created remove them
+//        self::$instance->pageManager->removeRoutePages();
     }
 }
 
 // Bootstrap the plugin main class
-Route_Pages::init();
+RoutePages::init();
