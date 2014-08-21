@@ -23,4 +23,23 @@ class PageGenerationCest
         $I->amOnPagesPage();
         $I->see('Route one', '.page-title');
     }
+
+    /**
+     * @test
+     * it should not generate any page if there is no persisted route meta
+     */
+    public function it_should_not_generate_any_page_if_there_is_no_persisted_route_meta(AcceptanceTester $I)
+    {
+        $I->dontSeeOptionInDatabase(['option_name' => RoutePages_GeneratingRoute::OPTION_ID]);
+        $I->loginAsAdmin();
+        $I->amOnPagesPage();
+        $I->seeElement('#the-list .no-items');
+
+        $I->amOnPluginsPage();
+        $I->activatePlugin('wp-router');
+        $I->activatePlugin('route-pages');
+
+        $I->amOnPagesPage();
+        $I->seeElement('#the-list .no-items');
+    }
 }
