@@ -26,7 +26,7 @@ class RoutePages_PageManager
 
     public function setRoutesMetaOptionName($routesMetaOptionName = null)
     {
-        $this->routesMetaOptionName = is_string($routesMetaOptionName) ? $routesMetaOptionName : WP_Routing_PersistableRoute::OPTION_ID;
+        $this->routesMetaOptionName = is_string($routesMetaOptionName) ? $routesMetaOptionName : WPRouting_PersistableRoute::OPTION_ID;
     }
 
     public function getPagesMetaOptionName()

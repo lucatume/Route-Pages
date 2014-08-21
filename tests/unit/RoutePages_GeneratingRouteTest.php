@@ -26,7 +26,7 @@ class RoutePages_GeneratingRouteTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_extend_wp_routing_persistable_route()
     {
-        $this->assertInstanceOf('WP_Routing_PersistableRoute', new RoutePages_GeneratingRoute());
+        $this->assertInstanceOf('WPRouting_PersistableRoute', new RoutePages_GeneratingRoute());
     }
 
     /**

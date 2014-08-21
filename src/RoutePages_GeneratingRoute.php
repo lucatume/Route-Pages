@@ -1,6 +1,6 @@
 <?php
 
-class RoutePages_GeneratingRoute  extends  WP_Routing_PersistableRoute
+class RoutePages_GeneratingRoute  extends  WPRouting_PersistableRoute
 {
     protected $generatedPostType = false;
 
@@ -11,7 +11,7 @@ class RoutePages_GeneratingRoute  extends  WP_Routing_PersistableRoute
      */
     public function hook(){
         parent::hook();
-        $this->f->add_filter(WP_Routing_PersistableRoute::ROUTE_PERSISTED_VALUES_FILTER, array($this, 'addRouteMetaArgs'));
+        $this->f->add_filter(WPRouting_PersistableRoute::ROUTE_PERSISTED_VALUES_FILTER, array($this, 'addRouteMetaArgs'));
         return $this;
     }
 
