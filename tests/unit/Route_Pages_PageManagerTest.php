@@ -55,7 +55,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $option->expects($this->once())
             ->method('getValues');
         $sut = new RoutePages_PageManager(null, null, $option);
-        $sut->generateRoutePages();
+        $sut->maybeGenerateRoutePages();
     }
 
     /**
@@ -82,13 +82,13 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $functions->expects($this->once())
             ->method('get_post_types')
-            ->will($this->returnValue(array('page','post','some-cpt')));
+            ->will($this->returnValue(array('page', 'post', 'some-cpt')));
         $functions->expects($this->once())
             ->method('wp_insert_post')
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
-        $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->generateRoutePages();
+        $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
+        $sut->maybeGenerateRoutePages();
     }
 
     /**
@@ -107,8 +107,8 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $functions->expects($this->never())
             ->method('wp_insert_post');
-        $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->generateRoutePages();
+        $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
+        $sut->maybeGenerateRoutePages();
     }
 
     /**
@@ -138,13 +138,13 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $functions->expects($this->once())
             ->method('get_post_types')
-            ->will($this->returnValue(array('page','post','some-cpt')));
+            ->will($this->returnValue(array('page', 'post', 'some-cpt')));
         $functions->expects($this->once())
             ->method('wp_insert_post')
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
-        $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->generateRoutePages();
+        $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
+        $sut->maybeGenerateRoutePages();
     }
 
     /**
@@ -174,12 +174,149 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $functions->expects($this->once())
             ->method('get_post_types')
-            ->will($this->returnValue(array('page','post','some-cpt')));
+            ->will($this->returnValue(array('page', 'post', 'some-cpt')));
         $functions->expects($this->once())
             ->method('wp_insert_post')
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
-        $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
+        $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
+        $sut->maybeGenerateRoutePages();
+    }
+
+    public function falsyValues()
+    {
+        return array(
+            array(''),
+            array(0),
+            array(null),
+            array(array()),
+            array(0.0),
+            array('0')
+        );
+    }
+
+    /**
+     * @test
+     * it should not generate route pages if the filter returns boolean false
+     */
+    public function it_should_not_generate_route_pages_if_the_filter_returns_false()
+    {
+        $functions = $this->getMockBuilder('tad_FunctionsAdapter')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__call', 'apply_filters', 'get_post_types'))
+            ->getMock();
+        $functions->expects($this->any())
+            ->method('apply_filters')
+            ->with(RoutePages::SHOULD_GENERATE_ROUTE_PAGES)
+            ->will($this->returnValue(false));
+        $sut = $this->getMockBuilder('RoutePages_PageManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__construct', 'generateRoutePages'))
+            ->getMock();
+        $sut->expects($this->never())
+            ->method('generateRoutePages');
+        $sut->setFunctionsAdapter($functions);
+        $sut->maybeGenerateRoutePages();
+    }
+
+    /**
+     * @test
+     * it should generate route pages if the filter returns falsy values not boolean false
+     * @dataProvider falsyValues
+     */
+    public function it_should_generate_route_pages_if_the_filter_returns_falsy_values_not_boolean_false($falsyValue)
+    {
+        $functions = $this->getMockBuilder('tad_FunctionsAdapter')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__call', 'apply_filters'))
+            ->getMock();
+        $functions->expects($this->any())
+            ->method('apply_filters')
+            ->with(RoutePages::SHOULD_GENERATE_ROUTE_PAGES)
+            ->will($this->returnValue($falsyValue));
+        $sut = $this->getMockBuilder('RoutePages_PageManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__construct', 'generateRoutePages'))
+            ->getMock();
+        $sut->expects($this->once())
+            ->method('generateRoutePages');
+        $sut->setFunctionsAdapter($functions);
+        $sut->maybeGenerateRoutePages();
+    }
+
+    /**
+     * @test
+     * it should insert route post meta when creating one
+     */
+    public function it_should_insert_route_post_meta_when_creating_one()
+    {
+        $oneRouteMeta = array('title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page');
+        $oneRouteMetaPlusId = array('ID' => 23, 'title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page');
+        $sut = $this->getMockBuilder('RoutePages_PageManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getGeneratedPostMeta', 'setGeneratedPostMeta'))
+            ->getMock();
+        $option = $this->getMockBuilder('tad_Option')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getValues'))
+            ->getMock();
+        $option->expects($this->once())
+            ->method('getValues')
+            ->willReturn(array('helloRoute' => $oneRouteMeta));
+        $sut->expects($this->once())
+            ->method('getGeneratedPostMeta')
+            ->with('helloRoute')
+            ->willReturn(null);
+        $sut->expects($this->once())
+            ->method('setGeneratedPostMeta')
+            ->with('helloRoute', $oneRouteMetaPlusId);
+        $f = $this->getMockBuilder('tad_FunctionsAdapterInterface')
+            ->setMethods(array('__call', 'wp_insert_post'))
+            ->getMock();
+        $f->expects($this->once())
+            ->method('wp_insert_post')
+            ->willReturn(23);
+        $sut->setRoutesMetaOption($option);
+        $sut->setFunctionsAdapter($f);
+        $sut->setValidPostTypes(array('page', 'post'));
+        $sut->generateRoutePages();
+    }
+
+    /**
+     * @test
+     * it should update route post meta when updating one
+     */
+    public function it_should_update_route_post_meta_when_updating_one()
+    {
+        $oneRouteMeta = array('title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page');
+        $oneRouteMetaPlusId = array('ID' => 23, 'title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page');
+        $sut = $this->getMockBuilder('RoutePages_PageManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getGeneratedPostMeta', 'setGeneratedPostMeta'))
+            ->getMock();
+        $option = $this->getMockBuilder('tad_Option')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getValues'))
+            ->getMock();
+        $option->expects($this->once())
+            ->method('getValues')
+            ->willReturn(array('helloRoute' => $oneRouteMetaPlusId));
+        $sut->expects($this->once())
+            ->method('getGeneratedPostMeta')
+            ->with('helloRoute')
+            ->willReturn($oneRouteMetaPlusId);
+        $sut->expects($this->once())
+            ->method('setGeneratedPostMeta')
+            ->with('helloRoute', $oneRouteMetaPlusId);
+        $f = $this->getMockBuilder('tad_FunctionsAdapterInterface')
+            ->setMethods(array('__call', 'wp_update_post'))
+            ->getMock();
+        $f->expects($this->once())
+            ->method('wp_update_post')
+            ->willReturn(23);
+        $sut->setRoutesMetaOption($option);
+        $sut->setFunctionsAdapter($f);
+        $sut->setValidPostTypes(array('page', 'post'));
         $sut->generateRoutePages();
     }
 }
