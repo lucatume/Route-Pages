@@ -82,6 +82,13 @@ class RoutePages
         $this->pageManager = $pageManager ? $pageManager : new RoutePages_PageManager();
     }
 
+    public function set_locale()
+    {
+        $locale = apply_filters('plugin_locale', get_locale(), 'routep');
+        load_textdomain('routep', WP_LANG_DIR . '/routep/routep-' . $locale . '.mo');
+        load_plugin_textdomain('routep', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+    }
+
     /**
      * Do not allow writing access to properties.
      *
@@ -125,10 +132,7 @@ class RoutePages
         }
         self::$instance->init_vars();
         self::$instance->hook();
-
-        $locale = apply_filters('plugin_locale', get_locale(), 'routep');
-        load_textdomain('routep', WP_LANG_DIR . '/routep/routep-' . $locale . '.mo');
-        load_plugin_textdomain('routep', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        self::$instance->set_locale();
     }
 
     /**
