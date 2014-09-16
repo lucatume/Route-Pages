@@ -11,8 +11,8 @@ modules:
     config:
         WPBrowser:
             url: 'http://route-pages.local'
-            adminUsername: root
-            adminPassword: root
+            adminUsername: theAdmin
+            adminPassword: iguana
             adminUrl: /wp-admin
         WPDb:
             dsn: 'mysql:host=127.0.0.1;dbname=route-pages'
