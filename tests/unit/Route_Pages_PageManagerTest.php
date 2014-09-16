@@ -191,7 +191,8 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             array(null),
             array(array()),
             array(0.0),
-            array('0')
+            array('0'),
+            array(false)
         );
     }
 
@@ -208,7 +209,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * it should not generate route pages if the filter returns truthy values
+     * it should generate route pages if the filter returns truthy values
      * @dataProvider truthyValues
      */
     public function it_should_generate_route_pages_if_the_filter_returns_truthy_values($truthyValue)
