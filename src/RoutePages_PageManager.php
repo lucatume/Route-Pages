@@ -143,19 +143,21 @@ class RoutePages_PageManager
                 );
 
                 // check if the post has been inserted already
-                // will be null on non-existent
+                // will be null if not generated before
                 $generatedPostMeta = $this->getGeneratedPostMeta($routeMetaKey);
                 $id = null;
 
+                // if the generated post meta is empty then insert a new post
                 if (empty($generatedPostMeta)) {
                     $id = $this->f->wp_insert_post($data, false);
-                    $routeMeta['ID'] = $id;
                 } else {
+                    // else updated it if the meta information is different
                     $data['ID'] = $generatedPostMeta['ID'];
-                    if ($data != $generatedPostMeta) {
+                    if ($routeMeta != $generatedPostMeta) {
                         $id = $this->f->wp_update_post($data, false);
                     }
                 }
+                $routeMeta['ID'] = $id;
 
                 // if the return value of the insertion/update is not an error then store it
                 if (!is_a($id, '\WP_Error')) {
@@ -166,12 +168,38 @@ class RoutePages_PageManager
             }
         }
     }
+
+    /**
+     * Returns an array containing a route generated post meta.
+     *
+     * The returned array has the format:
+     *     title - the post title
+     *     permalink - the post name that will set its permalink relative to the root url
+     *     generate - the type of the post the route should genereate
+     *     ID - the ID number of the generated post as returned by wp_insert_post or wp_udpate_post functions
+     *
+     * @param $key The slug for the route meta, it's the camelCase version of the permalink
+     * @return mixed Either an array in the format above or null
+     */
     public function getGeneratedPostMeta($key){
         if (!is_string($key)) {
             throw new BadMethodCallException('Key must be a string', 1);
         }
         return $this->pagesMetaOption->$key;
     }
+
+    /**
+     * Sets the meta for a route generated post.
+     *
+     * The array to insert has the format:
+     *     title - the post title
+     *     permalink - the post name that will set its permalink relative to the root url
+     *     generate - the type of the post the route should genereate
+     *     ID - the ID number of the generated post as returned by wp_insert_post or wp_udpate_post functions
+     *
+     * @param $key The slug for the route meta, it's the camelCase version of the permalink
+     * @param $value An array in the format above or null
+     */
     public function setGeneratedPostMeta($key, $value){
         if (!is_string($key)) {
             throw new BadMethodCallException('Key must be a string', 1);

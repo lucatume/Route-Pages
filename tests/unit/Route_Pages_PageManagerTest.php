@@ -288,8 +288,9 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_update_route_post_meta_when_updating_one()
     {
-        $oneRouteMeta = array('title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page');
-        $oneRouteMetaPlusId = array('ID' => 23, 'title' => 'Hello Route', 'permalink' => 'hello-route', 'generate' => 'page');
+        $routeMeta = array('title' => 'New title', 'permalink' => 'hello-route', 'generate' => 'page');
+        $oldStoredRouteMeta = array('ID' => 23, 'title' => 'Old title', 'permalink' => 'hello-route', 'generate' => 'page');
+        $newStoredRouteMeta = array('ID' => 23, 'title' => 'New title', 'permalink' => 'hello-route', 'generate' => 'page');
         $sut = $this->getMockBuilder('RoutePages_PageManager')
             ->disableOriginalConstructor()
             ->setMethods(array('getGeneratedPostMeta', 'setGeneratedPostMeta'))
@@ -300,14 +301,14 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $option->expects($this->once())
             ->method('getValues')
-            ->willReturn(array('helloRoute' => $oneRouteMetaPlusId));
+            ->willReturn(array('helloRoute' => $routeMeta));
         $sut->expects($this->once())
             ->method('getGeneratedPostMeta')
             ->with('helloRoute')
-            ->willReturn($oneRouteMetaPlusId);
+            ->willReturn($oldStoredRouteMeta);
         $sut->expects($this->once())
             ->method('setGeneratedPostMeta')
-            ->with('helloRoute', $oneRouteMetaPlusId);
+            ->with('helloRoute', $newStoredRouteMeta);
         $f = $this->getMockBuilder('tad_FunctionsAdapterInterface')
             ->setMethods(array('__call', 'wp_update_post'))
             ->getMock();
