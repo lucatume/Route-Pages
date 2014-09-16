@@ -55,7 +55,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $option->expects($this->once())
             ->method('getValues');
         $sut = new RoutePages_PageManager(null, null, $option);
-        $sut->maybeGenerateRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -88,7 +88,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
-        $sut->maybeGenerateRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -108,7 +108,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $functions->expects($this->never())
             ->method('wp_insert_post');
         $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
-        $sut->maybeGenerateRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -144,7 +144,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
-        $sut->maybeGenerateRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -180,7 +180,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null, null, $option, null, $functions);
-        $sut->maybeGenerateRoutePages();
+        $sut->generateRoutePages();
     }
 
     public function falsyValues()
@@ -195,11 +195,23 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+   public function truthyValues(){
+       return array(
+           array(true) ,
+           array(1) ,
+           array('string') ,
+           array(array('some')) ,
+           array(array('some' => 'value')) ,
+           array(-1)
+       );
+   }
+
     /**
      * @test
-     * it should not generate route pages if the filter returns boolean false
+     * it should not generate route pages if the filter returns truthy values
+     * @dataProvider truthyValues
      */
-    public function it_should_not_generate_route_pages_if_the_filter_returns_false()
+    public function it_should_generate_route_pages_if_the_filter_returns_truthy_values($truthyValue)
     {
         $functions = $this->getMockBuilder('tad_FunctionsAdapter')
             ->disableOriginalConstructor()
@@ -208,12 +220,12 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $functions->expects($this->any())
             ->method('apply_filters')
             ->with(RoutePages::SHOULD_GENERATE_ROUTE_PAGES)
-            ->will($this->returnValue(false));
+            ->will($this->returnValue($truthyValue));
         $sut = $this->getMockBuilder('RoutePages_PageManager')
             ->disableOriginalConstructor()
             ->setMethods(array('__construct', 'generateRoutePages'))
             ->getMock();
-        $sut->expects($this->never())
+        $sut->expects($this->once())
             ->method('generateRoutePages');
         $sut->setFunctionsAdapter($functions);
         $sut->maybeGenerateRoutePages();
@@ -221,10 +233,10 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * it should generate route pages if the filter returns falsy values not boolean false
+     * it should not generate route pages if the filter returns falsy values
      * @dataProvider falsyValues
      */
-    public function it_should_generate_route_pages_if_the_filter_returns_falsy_values_not_boolean_false($falsyValue)
+    public function it_should_generate_route_pages_if_the_filter_returns_falsy_values($falsyValue)
     {
         $functions = $this->getMockBuilder('tad_FunctionsAdapter')
             ->disableOriginalConstructor()
@@ -238,7 +250,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->setMethods(array('__construct', 'generateRoutePages'))
             ->getMock();
-        $sut->expects($this->once())
+        $sut->expects($this->never())
             ->method('generateRoutePages');
         $sut->setFunctionsAdapter($functions);
         $sut->maybeGenerateRoutePages();

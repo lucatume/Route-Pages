@@ -102,7 +102,7 @@ class RoutePages_PageManager
          *
          *     add_filter(RoutePages::SHOULD_GENERATE_ROUTE_PAGES, '__return_false');
          */
-        if (false === $this->f->apply_filters(RoutePages::SHOULD_GENERATE_ROUTE_PAGES, null)) {
+        if (!$this->f->apply_filters(RoutePages::SHOULD_GENERATE_ROUTE_PAGES, null)) {
             return false;
         }
         return true;
