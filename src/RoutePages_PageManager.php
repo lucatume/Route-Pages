@@ -49,7 +49,7 @@ class RoutePages_PageManager
         $this->routesMetaOption = $routesMetaOption ? $routesMetaOption : tad_Option::on($this->routesMetaOptionName);
     }
 
-    public function createRoutePages()
+    public function generateRoutePages()
     {
         $persistedRoutesMeta = $this->routesMetaOption->getValues();
         // get supported post types names
