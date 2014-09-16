@@ -1,0 +1,27 @@
+# Codeception Test Suite Configuration
+
+# suite for acceptance tests.
+# perform tests in browser using WPBrowser.
+class_name: UITester
+modules:
+    enabled:
+        - WPBrowser
+        - WPDb
+        - UIHelper
+    config:
+        WPBrowser:
+            url: 'http://route-pages.local'
+            adminUsername: root
+            adminPassword: root
+            adminUrl: /wp-admin
+        WPDb:
+            dsn: 'mysql:host=127.0.0.1;dbname=route-pages'
+            user: root
+            password: root
+            dump: tests/_data/route-pages.sql
+            populate: true
+            cleanup: true
+            url: 'http://route-pages.local'
+            tablePrefix: rp_
+            checkExistence: true
+            update: true

@@ -1,0 +1,8 @@
+# Codeception Test Suite Configuration
+
+# suite for service (integration) tests.
+# Emulate web requests and make application process them.
+class_name: ServiceTester
+modules:
+    enabled: [Filesystem, WPDb, WPLoader, ServiceHelper]
+    config: { WPDb: { dsn: 'mysql:host=127.0.0.1;dbname=route-pages', user: root, password: root, dump: tests/_data/route-pages.sql, populate: true, cleanup: true, url: 'http://route-pages.local', tablePrefix: rp_, checkExistence: true, update: true }, WPLoader: { wpRootFolder: /Users/Luca/Dropbox/Developer/WebDeveloper/websites/php52/route-pages, dbName: route-pages, dbHost: 127.0.0.1, dbUser: root, dbPassword: root, wpDebug: true, dbCharset: utf8, dbCollate: '', tablePrefix: rp_, domain: route-pages.local, adminEmail: admin@route-pages.local, title: 'Route Pages', phpBinary: php, language: '' } }

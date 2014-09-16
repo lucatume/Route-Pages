@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="en-US">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="en-US">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Plugins &lsaquo; Route Pages &#8212; WordPress</title>
+    <script type="text/javascript">
+        addLoadEvent = function (func) {
+            if (typeof jQuery != "undefined")jQuery(document).ready(func); else if (typeof wpOnload != 'function') {
+                wpOnload = func;
+            } else {
+                var oldonload = wpOnload;
+                wpOnload = function () {
+                    oldonload();
+                    func();
+                }
+            }
+        };
+        var ajaxurl = '/wp-admin/admin-ajax.php',
+            pagenow = 'plugins',
+            typenow = '',
+            adminpage = 'plugins-php',
+            thousandsSeparator = ',',
+            decimalPoint = '.',
+            isRtl = 0;
+    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel='stylesheet' href='http://route-pages.local/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=dashicons,admin-bar,wp-admin,buttons,wp-auth-check&amp;ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='thickbox-css'  href='http://route-pages.local/wp-includes/js/thickbox/thickbox.css?ver=3.9.1' type='text/css' media='all' />
+<!--[if lte IE 7]>
+<link rel='stylesheet' id='ie-css'  href='http://route-pages.local/wp-admin/css/ie.min.css?ver=3.9.1' type='text/css' media='all' />
+<![endif]-->
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var userSettings = {"url":"\/","uid":"1","time":"1408971671"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://route-pages.local/wp-admin/load-scripts.php?c=0&amp;load%5B%5D=jquery-core,jquery-migrate,utils&amp;ver=3.9.1'></script>
+<script type="text/javascript">var _wpColorScheme = {"icons":{"base":"#999","focus":"#2ea2cc","current":"#fff"}};</script>
+    <style type="text/css" media="print">#wpadminbar {
+            display: none;
+        }</style>
+    </head>
+<body class="wp-admin wp-core-ui no-js  plugins-php auto-fold admin-bar branch-3-9 version-3-9-1 admin-color-fresh locale-en-us no-customize-support no-svg">
+    <script type="text/javascript">
+        document.body.className = document.body.className.replace('no-js', 'js');
+    </script>
+
+    <script type="text/javascript">
+        (function () {
+            var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?' + cs + '(\\s+|$)');
+
+                        request = true;
+            
+            b[c] = b[c].replace(rcs, ' ');
+            b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
+        }());
+    </script>
+
+<div id="wpwrap">
+    <a tabindex="1" href="#wpbody-content" class="screen-reader-shortcut">Skip to main content</a>
+
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+    <ul id="adminmenu" role="navigation">
+
+        
+	<li class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-last" id="menu-dashboard">
+	<a href='index.php' class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-last" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-dashboard'><br /></div><div class='wp-menu-name'>Dashboard</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Dashboard</li><li class="wp-first-item"><a href='index.php' class="wp-first-item">Home</a></li><li><a href='update-core.php'>Updates <span class='update-plugins count-1' title='1 WordPress Update'><span class='update-count'>1</span></span></a></li></ul></li>
+	<li class="wp-not-current-submenu wp-menu-separator"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" id="menu-posts">
+	<a href='edit.php' class="wp-has-submenu wp-not-current-submenu open-if-no-js menu-top menu-icon-post menu-top-first" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-post'><br /></div><div class='wp-menu-name'>Posts</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Posts</li><li class="wp-first-item"><a href='edit.php' class="wp-first-item">All Posts</a></li><li><a href='post-new.php'>Add New</a></li><li><a href='edit-tags.php?taxonomy=category'>Categories</a></li><li><a href='edit-tags.php?taxonomy=post_tag'>Tags</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" id="menu-media">
+	<a href='upload.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-media'><br /></div><div class='wp-menu-name'>Media</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Media</li><li class="wp-first-item"><a href='upload.php' class="wp-first-item">Library</a></li><li><a href='media-new.php'>Add New</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" id="menu-pages">
+	<a href='edit.php?post_type=page' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-page'><br /></div><div class='wp-menu-name'>Pages</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Pages</li><li class="wp-first-item"><a href='edit.php?post_type=page' class="wp-first-item">All Pages</a></li><li><a href='post-new.php?post_type=page'>Add New</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" id="menu-comments">
+	<a href='edit-comments.php' class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-comments'><br /></div><div class='wp-menu-name'>Comments <span class='awaiting-mod count-0'><span class='pending-count'>0</span></span></div></a></li>
+	<li class="wp-not-current-submenu wp-menu-separator"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" id="menu-appearance">
+	<a href='themes.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-appearance'><br /></div><div class='wp-menu-name'>Appearance</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Appearance</li><li class="wp-first-item"><a href='themes.php' class="wp-first-item">Themes</a></li><li><a href='customize.php'>Customize</a></li><li><a href='widgets.php'>Widgets</a></li><li><a href='nav-menus.php'>Menus</a></li><li><a href='themes.php?page=custom-header'>Header</a></li><li><a href='themes.php?page=custom-background'>Background</a></li><li><a href='theme-editor.php'>Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-plugins" id="menu-plugins">
+	<a href='plugins.php' class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-plugins" ><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-plugins'><br /></div><div class='wp-menu-name'>Plugins <span class='update-plugins count-0'><span class='plugin-count'>0</span></span></div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Plugins <span class='update-plugins count-0'><span class='plugin-count'>0</span></span></li><li class="wp-first-item current"><a href='plugins.php' class="wp-first-item current">Installed Plugins</a></li><li><a href='plugin-install.php'>Add New</a></li><li><a href='plugin-editor.php'>Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" id="menu-users">
+	<a href='users.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-users'><br /></div><div class='wp-menu-name'>Users</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Users</li><li class="wp-first-item"><a href='users.php' class="wp-first-item">All Users</a></li><li><a href='user-new.php'>Add New</a></li><li><a href='profile.php'>Your Profile</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" id="menu-tools">
+	<a href='tools.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-tools'><br /></div><div class='wp-menu-name'>Tools</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Tools</li><li class="wp-first-item"><a href='tools.php' class="wp-first-item">Available Tools</a></li><li><a href='import.php'>Import</a></li><li><a href='export.php'>Export</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" id="menu-settings">
+	<a href='options-general.php' class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" aria-haspopup="true"><div class="wp-menu-arrow"><div></div></div><div class='wp-menu-image dashicons-before dashicons-admin-settings'><br /></div><div class='wp-menu-name'>Settings</div></a>
+	<ul class='wp-submenu wp-submenu-wrap'><li class='wp-submenu-head'>Settings</li><li class="wp-first-item"><a href='options-general.php' class="wp-first-item">General</a></li><li><a href='options-writing.php'>Writing</a></li><li><a href='options-reading.php'>Reading</a></li><li><a href='options-discussion.php'>Discussion</a></li><li><a href='options-media.php'>Media</a></li><li><a href='options-permalink.php'>Permalinks</a></li></ul></li><li id="collapse-menu" class="hide-if-no-js"><div id="collapse-button"><div></div></div><span>Collapse menu</span></li>    </ul>
+</div>
+    <div id="wpcontent">
+
+		<div id="wpadminbar" class="nojq nojs" role="navigation">
+			<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Skip to toolbar</a>
+			<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Top navigation toolbar." tabindex="0">
+				<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+		<li id="wp-admin-bar-menu-toggle"><a class="ab-item"  href="#"><span class="ab-icon"></span><span class="screen-reader-text">Menu</span></a>		</li>
+		<li id="wp-admin-bar-wp-logo" class="menupop"><a class="ab-item"  aria-haspopup="true" href="http://route-pages.local/wp-admin/about.php" title="About WordPress"><span class="ab-icon"></span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-wp-logo-default" class="ab-submenu">
+		<li id="wp-admin-bar-about"><a class="ab-item"  href="http://route-pages.local/wp-admin/about.php">About WordPress</a>		</li></ul><ul id="wp-admin-bar-wp-logo-external" class="ab-sub-secondary ab-submenu">
+		<li id="wp-admin-bar-wporg"><a class="ab-item"  href="https://wordpress.org/">WordPress.org</a>		</li>
+		<li id="wp-admin-bar-documentation"><a class="ab-item"  href="http://codex.wordpress.org/">Documentation</a>		</li>
+		<li id="wp-admin-bar-support-forums"><a class="ab-item"  href="https://wordpress.org/support/">Support Forums</a>		</li>
+		<li id="wp-admin-bar-feedback"><a class="ab-item"  href="https://wordpress.org/support/forum/requests-and-feedback">Feedback</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-site-name" class="menupop"><a class="ab-item"  aria-haspopup="true" href="http://route-pages.local/">Route Pages</a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-site-name-default" class="ab-submenu">
+		<li id="wp-admin-bar-view-site"><a class="ab-item"  href="http://route-pages.local/">Visit Site</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-updates"><a class="ab-item"  href="http://route-pages.local/wp-admin/update-core.php" title="1 WordPress Update"><span class="ab-icon"></span><span class="ab-label">1</span><span class="screen-reader-text">1 WordPress Update</span></a>		</li>
+		<li id="wp-admin-bar-comments"><a class="ab-item"  href="http://route-pages.local/wp-admin/edit-comments.php" title="0 comments awaiting moderation"><span class="ab-icon"></span><span id="ab-awaiting-mod" class="ab-label awaiting-mod pending-count count-0">0</span></a>		</li>
+		<li id="wp-admin-bar-new-content" class="menupop"><a class="ab-item"  aria-haspopup="true" href="http://route-pages.local/wp-admin/post-new.php" title="Add New"><span class="ab-icon"></span><span class="ab-label">New</span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+		<li id="wp-admin-bar-new-post"><a class="ab-item"  href="http://route-pages.local/wp-admin/post-new.php">Post</a>		</li>
+		<li id="wp-admin-bar-new-media"><a class="ab-item"  href="http://route-pages.local/wp-admin/media-new.php">Media</a>		</li>
+		<li id="wp-admin-bar-new-page"><a class="ab-item"  href="http://route-pages.local/wp-admin/post-new.php?post_type=page">Page</a>		</li>
+		<li id="wp-admin-bar-new-user"><a class="ab-item"  href="http://route-pages.local/wp-admin/user-new.php">User</a>		</li></ul></div>		</li></ul><ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar"><a class="ab-item"  aria-haspopup="true" href="http://route-pages.local/wp-admin/profile.php" title="My Account">Howdy, theAdmin<img alt='' src='http://1.gravatar.com/avatar/d393fcb75e0801c42fe5559ae1e846e6?s=26&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D26&amp;r=G' class='avatar avatar-26 photo' height='26' width='26' /></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-user-actions" class="ab-submenu">
+		<li id="wp-admin-bar-user-info"><a class="ab-item" tabindex="-1" href="http://route-pages.local/wp-admin/profile.php"><img alt='' src='http://1.gravatar.com/avatar/d393fcb75e0801c42fe5559ae1e846e6?s=64&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G' class='avatar avatar-64 photo' height='64' width='64' /><span class='display-name'>theAdmin</span></a>		</li>
+		<li id="wp-admin-bar-edit-profile"><a class="ab-item"  href="http://route-pages.local/wp-admin/profile.php">Edit My Profile</a>		</li>
+		<li id="wp-admin-bar-logout"><a class="ab-item"  href="http://route-pages.local/wp-login.php?action=logout&#038;_wpnonce=7e702ef505">Log Out</a>		</li></ul></div>		</li></ul>			</div>
+						<a class="screen-reader-shortcut" href="http://route-pages.local/wp-login.php?action=logout&#038;_wpnonce=7e702ef505">Log Out</a>
+					</div>
+
+		
+    <div id="wpbody">
+
+<div id="wpbody-content" aria-label="Main content" tabindex="0">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="Contextual Help Tab">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+						
+							<li id="tab-link-overview" class="active">
+								<a href="#tab-panel-overview" aria-controls="tab-panel-overview">
+									Overview								</a>
+							</li>
+						
+							<li id="tab-link-compatibility-problems">
+								<a href="#tab-panel-compatibility-problems" aria-controls="tab-panel-compatibility-problems">
+									Troubleshooting								</a>
+							</li>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>For more information:</strong></p><p><a href="http://codex.wordpress.org/Managing_Plugins#Plugin_Management" target="_blank">Documentation on Managing Plugins</a></p><p><a href="https://wordpress.org/support/" target="_blank">Support Forums</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+						
+							<div id="tab-panel-overview" class="help-tab-content active">
+								<p>Plugins extend and expand the functionality of WordPress. Once a plugin is installed, you may activate it or deactivate it here.</p><p>You can find additional plugins for your site by using the <a href="plugin-install.php">Plugin Browser/Installer</a> functionality or by browsing the <a href="https://wordpress.org/plugins/" target="_blank">WordPress Plugin Directory</a> directly and installing new plugins manually. To manually install a plugin you generally just need to upload the plugin file into your <code>/wp-content/plugins</code> directory. Once a plugin has been installed, you can activate it here.</p>							</div>
+						
+							<div id="tab-panel-compatibility-problems" class="help-tab-content">
+								<p>Most of the time, plugins play nicely with the core of WordPress and with other plugins. Sometimes, though, a plugin&#8217;s code will get in the way of another plugin, causing compatibility issues. If your site starts doing strange things, this may be the problem. Try deactivating all your plugins and re-activating them in various combinations until you isolate which one(s) caused the issue.</p><p>If something goes wrong with a plugin and you can&#8217;t use WordPress, delete or rename that file in the <code>/Users/Luca/Dropbox/Developer/WebDeveloper/websites/php52/route-pages/wp-content/plugins</code> directory and it will be automatically deactivated.</p>							</div>
+											</div>
+				</div>
+			</div>
+				<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="Screen Options Tab">
+		<form id="adv-settings" action="" method="post">
+					<h5>Show on screen</h5>
+					<div class="metabox-prefs">
+				<label for="description-hide"><input class="hide-column-tog" name="description-hide" type="checkbox" id="description-hide" value="description" checked='checked' />Description</label>
+				<br class="clear" />
+			</div>
+				<div class="screen-options">
+							<input type="number" step="1" min="1" max="999" class="screen-per-page" name="wp_screen_options[value]"
+					id="plugins_per_page" maxlength="3"
+					value="999" />
+				<label for="plugins_per_page">
+					Plugins				</label>
+			<input type="submit" name="screen-options-apply" id="screen-options-apply" class="button" value="Apply"  />			<input type='hidden' name='wp_screen_options[option]' value='plugins_per_page' />
+		</div>
+				<div><input type="hidden" id="screenoptionnonce" name="screenoptionnonce" value="4b1989919c" /></div>
+		</form>
+		</div>
+				</div>
+				<div id="screen-meta-links">
+					<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#contextual-help-wrap" id="contextual-help-link" class="show-settings" aria-controls="contextual-help-wrap" aria-expanded="false">Help</a>
+			</div>
+					<div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
+			<a href="#screen-options-wrap" id="show-settings-link" class="show-settings" aria-controls="screen-options-wrap" aria-expanded="false">Screen Options</a>
+			</div>
+				</div>
+		<div class='update-nag'><a href="http://codex.wordpress.org/Version_3.9.2">WordPress 3.9.2</a> is available! <a href="http://route-pages.local/wp-admin/update-core.php">Please update now</a>.</div>
+    <div id="message" class="updated"><p>Plugin could not be activated because it triggered a <strong>fatal error</strong>.</p>
+                    <iframe style="border:0" width="100%" height="70px"
+                    src="plugins.php?action=error_scrape&amp;plugin=route-pages/route_pages.php&amp;_wpnonce=5e4cbca64a"></iframe>
+            </div>
+
+    <div class="wrap">
+        <h2>Plugins                <a href="http://route-pages.local/wp-admin/plugin-install.php"
+                   class="add-new-h2">Add New</a>
+                    </h2>
+
+        
+        <ul class='subsubsub'>
+	<li class='all'><a href='plugins.php?plugin_status=all'  class="current">All <span class="count">(9)</span></a> |</li>
+	<li class='inactive'><a href='plugins.php?plugin_status=inactive' >Inactive <span class="count">(9)</span></a> |</li>
+	<li class='recently_activated'><a href='plugins.php?plugin_status=recently_activated' >Recently Active <span class="count">(1)</span></a></li>
+</ul>
+        <form method="get" action="">
+            <p class="search-box">
+	<label class="screen-reader-text" for="plugin-search-input">Search Installed Plugins:</label>
+	<input type="search" id="plugin-search-input" name="s" value="" />
+	<input type="submit" name="" id="search-submit" class="button" value="Search Installed Plugins"  /></p>
+        </form>
+
+        <form method="post" action="">
+
+            <input type="hidden" name="plugin_status" value="all"/>
+            <input type="hidden" name="paged" value="1"/>
+
+            <input type="hidden" id="_wpnonce" name="_wpnonce" value="6eabeedf86" /><input type="hidden" name="_wp_http_referer" value="/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php" />	<div class="tablenav top">
+
+		<div class="alignleft actions bulkactions">
+			<select name='action'>
+<option value='-1' selected='selected'>Bulk Actions</option>
+	<option value='activate-selected'>Activate</option>
+	<option value='deactivate-selected'>Deactivate</option>
+	<option value='update-selected'>Update</option>
+	<option value='delete-selected'>Delete</option>
+</select>
+<input type="submit" name="" id="doaction" class="button action" value="Apply"  />
+		</div>
+<div class='tablenav-pages one-page'><span class="displaying-num">9 items</span>
+<span class='pagination-links'><a class='first-page disabled' title='Go to the first page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php'>&laquo;</a>
+<a class='prev-page disabled' title='Go to the previous page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php&#038;paged=1'>&lsaquo;</a>
+<span class="paging-input"><input class='current-page' title='Current page' type='text' name='paged' value='1' size='1' /> of <span class='total-pages'>1</span></span>
+<a class='next-page disabled' title='Go to the next page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php&#038;paged=1'>&rsaquo;</a>
+<a class='last-page disabled' title='Go to the last page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php&#038;paged=1'>&raquo;</a></span></div>
+		<br class="clear" />
+	</div>
+<table class="wp-list-table widefat plugins">
+	<thead>
+	<tr>
+		<th scope='col' id='cb' class='manage-column column-cb check-column'  style=""><label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox" /></th><th scope='col' id='name' class='manage-column column-name'  style="">Plugin</th><th scope='col' id='description' class='manage-column column-description'  style="">Description</th>	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<th scope='col'  class='manage-column column-cb check-column'  style=""><label class="screen-reader-text" for="cb-select-all-2">Select All</label><input id="cb-select-all-2" type="checkbox" /></th><th scope='col'  class='manage-column column-name'  style="">Plugin</th><th scope='col'  class='manage-column column-description'  style="">Description</th>	</tr>
+	</tfoot>
+
+	<tbody id="the-list">
+		<tr id='airplane-mode' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_3cb33208129c9db00c6d64d234213891' >Select Airplane Mode</label><input type='checkbox' name='checked[]' value='airplane-mode/airplane-mode.php' id='checkbox_3cb33208129c9db00c6d64d234213891' /></th><td class='plugin-title'><strong>Airplane Mode</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=airplane-mode%2Fairplane-mode.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=18b9acd3cb" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=airplane-mode/airplane-mode.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=airplane-mode%2Fairplane-mode.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>Control loading of external files when developing locally</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 0.0.1 | By <a href="http://reaktivstudios.com/" title="Visit author homepage">Andrew Norcross</a> | <a href="http://reaktivstudios.com/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='debug-bar' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_a55f1e83ab4fee1b42772d08e9971a9c' >Select Debug Bar</label><input type='checkbox' name='checked[]' value='debug-bar/debug-bar.php' id='checkbox_a55f1e83ab4fee1b42772d08e9971a9c' /></th><td class='plugin-title'><strong>Debug Bar</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=debug-bar%2Fdebug-bar.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=84c16e6278" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=debug-bar/debug-bar.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=debug-bar%2Fdebug-bar.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>Adds a debug menu to the admin bar that shows query, cache, and other helpful debugging information.</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 0.8.1 | By <a href="http://wordpress.org/" title="Visit author homepage">wordpressdotorg</a> | <a href="http://wordpress.org/extend/plugins/debug-bar/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='debug-bar-actions-and-filters-addon' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_631c32cd4f44f38ccb71efc838fc0aa3' >Select Debug Bar Actions and Filters Addon</label><input type='checkbox' name='checked[]' value='debug-bar-actions-and-filters-addon/debug-bar-action-and-filters-addon.php' id='checkbox_631c32cd4f44f38ccb71efc838fc0aa3' /></th><td class='plugin-title'><strong>Debug Bar Actions and Filters Addon</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=debug-bar-actions-and-filters-addon%2Fdebug-bar-action-and-filters-addon.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=c8ca7c2c9b" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=debug-bar-actions-and-filters-addon/debug-bar-action-and-filters-addon.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=debug-bar-actions-and-filters-addon%2Fdebug-bar-action-and-filters-addon.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>This plugin add two more tabs in the Debug Bar to display hooks(Actions and Filters) attached to the current request. Actions tab displays the actions hooked to current request. Filters tab displays the filter tags along with the functions attached to it with priority.</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 1.4.1 | By <a href="http://www.subharanjan.in/" title="Visit author homepage">Subharanjan</a> | <a href="http://wordpress.org/extend/plugins/debug-bar-actions-and-filters-addon/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='debug-bar-extender' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_9d94c08fb0563e2d82c9e3b5d335f365' >Select Debug Bar Extender</label><input type='checkbox' name='checked[]' value='debug-bar-extender/debug-bar-extender.php' id='checkbox_9d94c08fb0563e2d82c9e3b5d335f365' /></th><td class='plugin-title'><strong>Debug Bar Extender</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=debug-bar-extender%2Fdebug-bar-extender.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=19b7d308d4" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=debug-bar-extender/debug-bar-extender.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=debug-bar-extender%2Fdebug-bar-extender.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>A minimalistic profiler / debugging class that hooks into the debug bar and can be implemented easily</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 0.5 | By <a href="http://hitchhackerguide.com" title="Visit author homepage">Thorsten Ott, Automattic</a> | <a href="http://wordpress.org/extend/plugins/debug-bar-extender/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='debug-bar-list-script-style-dependencies' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_50a3cca9265339c9324c8f5ba06b2398' >Select Debug Bar List Script &amp; Style Dependencies</label><input type='checkbox' name='checked[]' value='debug-bar-list-dependencies/debug-bar-list-dependencies.php' id='checkbox_50a3cca9265339c9324c8f5ba06b2398' /></th><td class='plugin-title'><strong>Debug Bar List Script &amp; Style Dependencies</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=debug-bar-list-dependencies%2Fdebug-bar-list-dependencies.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=2073df1c86" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=debug-bar-list-dependencies/debug-bar-list-dependencies.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=debug-bar-list-dependencies%2Fdebug-bar-list-dependencies.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>Debug Bar List Script &amp; Style Dependencies is an add-on to WordPress Debug Bar</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 1.0.6 | By <a href="http://www.soderlind.no" title="Visit author homepage">Per Soderlind</a> | <a href="http://soderlind.no/debug-bar-list-script-and-style-dependencies/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='log-deprecated-notices' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_1db2d5bdc059cd7a032c8020ba059c13' >Select Log Deprecated Notices</label><input type='checkbox' name='checked[]' value='log-deprecated-notices/log-deprecated-notices.php' id='checkbox_1db2d5bdc059cd7a032c8020ba059c13' /></th><td class='plugin-title'><strong>Log Deprecated Notices</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=log-deprecated-notices%2Flog-deprecated-notices.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=ca5d19e4aa" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=log-deprecated-notices/log-deprecated-notices.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=log-deprecated-notices%2Flog-deprecated-notices.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>Logs the usage of deprecated files, functions, hooks, and function arguments, offers the alternative if available, and identifies where the deprecated functionality is being used. WP_DEBUG not required (but its general use is strongly recommended).</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 0.2 | By <a href="http://nacin.com/" title="Visit author homepage">Andrew Nacin</a> | <a href="http://wordpress.org/extend/plugins/log-deprecated-notices/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='my-routes' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_cb08a72ba50983a2ef902aa7cf8f45e1' >Select My routes</label><input type='checkbox' name='checked[]' value='my-routes/my_routes.php' id='checkbox_cb08a72ba50983a2ef902aa7cf8f45e1' /></th><td class='plugin-title'><strong>My routes</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=my-routes%2Fmy_routes.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=02be7c8b71" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=my-routes/my_routes.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=my-routes%2Fmy_routes.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>Site-specific routes</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 0.1.0 | By <a href="http://theaveragedev.com" title="Visit author homepage">theAverageDev (Luca Tumedei)</a> | <a href="http://wordpress.org/plugins" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='rewrite-rules-inspector' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_e4cb97451d29582dcfd42124a4edc976' >Select Rewrite Rules Inspector</label><input type='checkbox' name='checked[]' value='rewrite-rules-inspector/rewrite-rules-inspector.php' id='checkbox_e4cb97451d29582dcfd42124a4edc976' /></th><td class='plugin-title'><strong>Rewrite Rules Inspector</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=rewrite-rules-inspector%2Frewrite-rules-inspector.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=2ef70134ce" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=rewrite-rules-inspector/rewrite-rules-inspector.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=rewrite-rules-inspector%2Frewrite-rules-inspector.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>Simple WordPress Admin view for inspecting your rewrite rules</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 1.2.1 | By <a href="http://automattic.com/" title="Visit author homepage">Daniel Bachhuber, Automattic</a> | <a href="http://wordpress.org/extend/plugins/rewrite-rules-inspector/" title="Visit plugin site">Visit plugin site</a></div></td></tr><tr id='route-pages' class='inactive'><th scope='row' class='check-column'><label class='screen-reader-text' for='checkbox_2ea25adc2e0e5c8e088a41e0162373c5' >Select Route Pages</label><input type='checkbox' name='checked[]' value='route-pages/route_pages.php' id='checkbox_2ea25adc2e0e5c8e088a41e0162373c5' /></th><td class='plugin-title'><strong>Route Pages</strong><div class="row-actions visible"><span class='activate'><a href="plugins.php?action=activate&amp;plugin=route-pages%2Froute_pages.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=aa418b734e" title="Activate this plugin" class="edit">Activate</a> | </span><span class='edit'><a href="plugin-editor.php?file=route-pages/route_pages.php" title="Open this file in the Plugin Editor" class="edit">Edit</a> | </span><span class='delete'><a href="plugins.php?action=delete-selected&amp;checked%5B0%5D=route-pages%2Froute_pages.php&amp;plugin_status=all&amp;paged=1&amp;s&amp;_wpnonce=6eabeedf86" title="Delete this plugin" class="delete">Delete</a></span></div></td><td class='column-description desc'>
+						<div class='plugin-description'><p>A WP Router extension to manage route created pages.</p></div>
+						<div class='inactive second plugin-version-author-uri'>Version 0.1.0 | By <a href="http://theaveragedev.com" title="Visit author homepage">theAverageDev (Luca Tumedei)</a> | <a href="http://theaveragedev.com" title="Visit plugin site">Visit plugin site</a></div></td></tr>	</tbody>
+</table>
+	<div class="tablenav bottom">
+
+		<div class="alignleft actions bulkactions">
+			<select name='action2'>
+<option value='-1' selected='selected'>Bulk Actions</option>
+	<option value='activate-selected'>Activate</option>
+	<option value='deactivate-selected'>Deactivate</option>
+	<option value='update-selected'>Update</option>
+	<option value='delete-selected'>Delete</option>
+</select>
+<input type="submit" name="" id="doaction2" class="button action" value="Apply"  />
+		</div>
+<div class='tablenav-pages one-page'><span class="displaying-num">9 items</span>
+<span class='pagination-links'><a class='first-page disabled' title='Go to the first page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php'>&laquo;</a>
+<a class='prev-page disabled' title='Go to the previous page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php&#038;paged=1'>&lsaquo;</a>
+<span class="paging-input">1 of <span class='total-pages'>1</span></span>
+<a class='next-page disabled' title='Go to the next page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php&#038;paged=1'>&rsaquo;</a>
+<a class='last-page disabled' title='Go to the last page' href='http://route-pages.local/wp-admin/plugins.php?plugin=route-pages%2Froute_pages.php&#038;paged=1'>&raquo;</a></span></div>
+		<br class="clear" />
+	</div>
+        </form>
+
+    </div>
+
+
+<div class="clear"></div></div><!-- wpbody-content -->
+<div class="clear"></div></div><!-- wpbody -->
+<div class="clear"></div></div><!-- wpcontent -->
+
+<div id="wpfooter">
+        <p id="footer-left" class="alignleft">
+        <span id="footer-thankyou">Thank you for creating with <a href="https://wordpress.org/">WordPress</a>.</span>    </p>
+
+    <p id="footer-upgrade" class="alignright">
+        <strong><a href="http://route-pages.local/wp-admin/update-core.php">Get Version 3.9.2</a></strong>    </p>
+
+    <div class="clear"></div>
+</div>
+    <div id="wp-auth-check-wrap" class="hidden">
+        <div id="wp-auth-check-bg"></div>
+        <div id="wp-auth-check">
+            <div class="wp-auth-check-close" tabindex="0" title="Close"></div>
+                            <div id="wp-auth-check-form"
+                     data-src="http://route-pages.local/wp-login.php?interim-login=1"></div>
+                        <div class="wp-auth-fallback">
+                <p><b class="wp-auth-fallback-expired" tabindex="0">Session expired</b></p>
+
+                <p><a href="http://route-pages.local/wp-login.php" target="_blank">Please log in again.</a>
+                    The login page will open in a new window. After logging in you can close it and return to this page.                </p>
+            </div>
+        </div>
+    </div>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var commonL10n = {"warnDelete":"You are about to permanently delete the selected items.\n  'Cancel' to stop, 'OK' to delete."};var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/route-pages.local\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};var plugininstallL10n = {"plugin_information":"Plugin Information:","ays":"Are you sure you want to install this plugin?"};var heartbeatSettings = {"nonce":"1792665f36"};var authcheckL10n = {"beforeunload":"Your session has expired. You can log in again from this page or go to the login page.","interval":"180"};/* ]]> */
+</script>
+<script type='text/javascript' src='http://route-pages.local/wp-admin/load-scripts.php?c=0&amp;load%5B%5D=hoverIntent,common,admin-bar,thickbox,plugin-install,svg-painter,heartbeat,wp-auth-check&amp;ver=3.9.1'></script>
+
+<div class="clear"></div></div><!-- wpwrap -->
+<script type="text/javascript">if (typeof wpOnload == 'function')wpOnload();</script>
+</body>
+</html>
