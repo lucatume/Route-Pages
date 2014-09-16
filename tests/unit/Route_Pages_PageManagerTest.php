@@ -55,7 +55,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $option->expects($this->once())
             ->method('getValues');
         $sut = new RoutePages_PageManager(null, null, $option);
-        $sut->createRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -88,7 +88,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->createRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -108,7 +108,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $functions->expects($this->never())
             ->method('wp_insert_post');
         $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->createRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -144,7 +144,7 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->createRoutePages();
+        $sut->generateRoutePages();
     }
 
     /**
@@ -180,6 +180,6 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($insertArguments))
             ->will($this->returnValue(23));
         $sut = new RoutePages_PageManager(null ,null ,$option, null, $functions);
-        $sut->createRoutePages();
+        $sut->generateRoutePages();
     }
 }
