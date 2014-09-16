@@ -320,4 +320,41 @@ class Route_Pages_PageManagerTest extends \PHPUnit_Framework_TestCase
         $sut->setValidPostTypes(array('page', 'post'));
         $sut->generateRoutePages();
     }
+
+    /**
+     * @test
+     * it should not call wp_update_post if generated route meta is the same
+     */
+    public function it_should_not_call_wp_update_post_if_generated_route_meta_is_the_same()
+    {
+        $routeMeta = array('title' => 'Some title', 'permalink' => 'hello-route', 'generate' => 'page');
+        $storedRouteMeta = array('ID' => 23, 'title' => 'Some title', 'permalink' => 'hello-route', 'generate' => 'page');
+        $sut = $this->getMockBuilder('RoutePages_PageManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getGeneratedPostMeta', 'setGeneratedPostMeta'))
+            ->getMock();
+        $option = $this->getMockBuilder('tad_Option')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getValues'))
+            ->getMock();
+        $option->expects($this->once())
+            ->method('getValues')
+            ->willReturn(array('helloRoute' => $routeMeta));
+        $sut->expects($this->once())
+            ->method('getGeneratedPostMeta')
+            ->with('helloRoute')
+            ->willReturn($storedRouteMeta);
+        $sut->expects($this->once())
+            ->method('setGeneratedPostMeta')
+            ->with('helloRoute', $storedRouteMeta);
+        $f = $this->getMockBuilder('tad_FunctionsAdapterInterface')
+            ->setMethods(array('__call', 'wp_update_post'))
+            ->getMock();
+        $f->expects($this->never())
+            ->method('wp_update_post');
+        $sut->setRoutesMetaOption($option);
+        $sut->setFunctionsAdapter($f);
+        $sut->setValidPostTypes(array('page', 'post'));
+        $sut->generateRoutePages();
+    }
 }

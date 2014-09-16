@@ -150,14 +150,15 @@ class RoutePages_PageManager
                 // if the generated post meta is empty then insert a new post
                 if (empty($generatedPostMeta)) {
                     $id = $this->f->wp_insert_post($data, false);
+                    $routeMeta['ID'] = $id;
                 } else {
                     // else updated it if the meta information is different
                     $data['ID'] = $generatedPostMeta['ID'];
+                    $routeMeta['ID'] = $generatedPostMeta['ID'];
                     if ($routeMeta != $generatedPostMeta) {
                         $id = $this->f->wp_update_post($data, false);
                     }
                 }
-                $routeMeta['ID'] = $id;
 
                 // if the return value of the insertion/update is not an error then store it
                 if (!is_a($id, '\WP_Error')) {
