@@ -14,7 +14,7 @@ class RoutePages
      * happening if boolean `false` is returned. See RoutePages_PageManager
      * class for usage.
      */
-    const SHOULD_GENERATE_ROUTE_PAGES = 'RoutePages_should_generate_route_pages';
+    const SHOULD_GENERATE_ROUTE_POSTS = 'RoutePages_should_generate_route_posts';
 
     public $version = null;
     public $path = null;
