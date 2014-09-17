@@ -16,7 +16,7 @@ class ActivationAndInstallationRequirementsCest
         $this->maybeRestoreWpRouterFileExtension();
     }
 
-    public function shouldShowWpDiePageIfWPRouterNotInstalled(AcceptanceTester $I)
+    public function shouldShowWpDiePageIfWPRouterNotInstalled(UITester $I)
     {
         $this->disinstallWpRouterPlugin();
         $I->loginAsAdmin();
@@ -28,7 +28,7 @@ class ActivationAndInstallationRequirementsCest
         $I->seeWpDiePage();
         $I->seeElement('a#wp-router-installation-link');
     }
-    public function shouldShowWpDiePageIfWPRouterNotActivated(AcceptanceTester $I){
+    public function shouldShowWpDiePageIfWPRouterNotActivated(UITester $I){
         $I->loginAsAdmin();
         $I->amOnPluginsPage();
         $I->canSeePluginDeactivated('wp-router');
@@ -39,7 +39,7 @@ class ActivationAndInstallationRequirementsCest
         $I->seeElement('a#wp-router-activation-link');
     }
 
-    public function shouldActivateIfWPRouterActivated(AcceptanceTester $I){
+    public function shouldActivateIfWPRouterActivated(UITester $I){
 
         $I->loginAsAdmin();
         $I->amOnPluginsPage();
