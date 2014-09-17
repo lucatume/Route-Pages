@@ -11,7 +11,7 @@ class PageCreationTest extends \WP_UnitTestCase {
 		// trigger route post generation
 		add_filter( RoutePages::SHOULD_GENERATE_ROUTE_POSTS, '__return_true' );
 		// set the route meta in the database
-		$title     = 'Hello';
+		$title = 'Hello';
 		$routeMeta = array(
 			'hello' => array(
 				'title' => $title,
@@ -34,4 +34,82 @@ class PageCreationTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * @test
+	 * it should not create any page if no route meta option is in the database
+	 */
+	public function it_should_not_create_any_page_if_no_route_meta_option_is_in_the_database() {
+		add_filter( RoutePages::SHOULD_GENERATE_ROUTE_POSTS, '__return_true' );
+		$originalCount = get_posts( array( 'post_type' => 'page' ) );
+		$sut           = new RoutePages_PageManager();
+		$sut->generateRoutePages();
+		$newCount = get_posts( array( 'post_type' => 'page' ) );
+	}
+
+	/**
+	 * @test
+	 * it should not create any page if route meta option is empty
+	 */
+	public function it_should_not_create_any_page_if_route_meta_option_is_empty() {
+		add_filter( RoutePages::SHOULD_GENERATE_ROUTE_POSTS, '__return_true' );
+		add_option( WPRouting_PersistableRoute::OPTION_ID, array() );
+		$originalCount = get_posts( array( 'post_type' => 'page' ) );
+		$sut           = new RoutePages_PageManager();
+		$sut->generateRoutePages();
+		$newCount = get_posts( array( 'post_type' => 'page' ) );
+	}
+
+	/**
+	 * @test
+	 * it should not create any page if route meta option is missing permalink
+	 */
+	public function it_should_not_create_any_page_if_route_meta_option_is_missing_permalink() {
+		add_filter( RoutePages::SHOULD_GENERATE_ROUTE_POSTS, '__return_true' );
+		add_option( WPRouting_PersistableRoute::OPTION_ID, array(
+				'routeOne' => array(
+					'title' => 'Route One',
+					'generate' => 'page'
+				)
+			) );
+		$originalCount = get_posts( array( 'post_type' => 'page' ) );
+		$sut           = new RoutePages_PageManager();
+		$sut->generateRoutePages();
+		$newCount = get_posts( array( 'post_type' => 'page' ) );
+	}
+
+	/**
+	 * @test
+	 * it should not generate any page if route meta option is missing title
+	 */
+	public function it_should_not_generate_any_page_if_route_meta_option_is_missing_title() {
+		add_filter( RoutePages::SHOULD_GENERATE_ROUTE_POSTS, '__return_true' );
+		add_option( WPRouting_PersistableRoute::OPTION_ID, array(
+				'routeOne' => array(
+					'permalink' => '^route-one$',
+					'generate' => 'page'
+				)
+			) );
+		$originalCount = get_posts( array( 'post_type' => 'page' ) );
+		$sut           = new RoutePages_PageManager();
+		$sut->generateRoutePages();
+		$newCount = get_posts( array( 'post_type' => 'page' ) );
+	}
+
+	/**
+	 * @test
+	 * it should not generate any page if route meta option is missing the generate value
+	 */
+	public function it_should_not_generate_any_page_if_route_meta_option_is_missing_the_generate_value() {
+		add_filter( RoutePages::SHOULD_GENERATE_ROUTE_POSTS, '__return_true' );
+		add_option( WPRouting_PersistableRoute::OPTION_ID, array(
+				'routeOne' => array(
+					'permalink' => '^route-one$',
+					'title' => 'Route One'
+				)
+			) );
+		$originalCount = get_posts( array( 'post_type' => 'page' ) );
+		$sut           = new RoutePages_PageManager();
+		$sut->generateRoutePages();
+		$newCount = get_posts( array( 'post_type' => 'page' ) );
+	}
 }
